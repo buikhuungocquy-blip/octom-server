@@ -8,29 +8,34 @@
 </head>
 <body>
   <h1>OCTOM Kanban Board 🎯</h1>
+
+  <!-- Form thêm task -->
   <div>
     <input type="text" id="taskInput" placeholder="Nhập công việc mới" />
     <input type="date" id="deadlineInput" />
     <button onclick="addTask()">Thêm</button>
   </div>
 
+  <!-- Board Kanban -->
   <div class="board">
-    <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <div class="column">
       <h2>Todo</h2>
       <div id="todo" class="task-list"></div>
     </div>
-    <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <div class="column">
       <h2>Doing</h2>
       <div id="doing" class="task-list"></div>
     </div>
-    <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <div class="column">
       <h2>Done</h2>
       <div id="done" class="task-list"></div>
     </div>
   </div>
 
+  <!-- Thống kê -->
   <div id="stats">Todo: 0 | Doing: 0 | Done: 0</div>
 
+  <!-- Bộ lọc -->
   <div class="filters">
     <h3>Lọc theo ngày</h3>
     <input type="date" id="filterDate" />
@@ -42,7 +47,9 @@
     <button onclick="filterByRange()">Lọc</button>
   </div>
 
+  <!-- Đăng xuất -->
   <button onclick="logout()">Đăng xuất</button>
+
   <script src="app.js"></script>
 </body>
 </html>
