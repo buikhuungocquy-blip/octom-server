@@ -9,6 +9,16 @@
 <body>
   <h1>OCTOM Kanban Board 🎯</h1>
 
+  <!-- Đăng nhập / Đăng ký -->
+  <div id="auth">
+    <h3>Đăng nhập / Đăng ký</h3>
+    <input type="text" id="username" placeholder="Tên tài khoản" />
+    <input type="password" id="password" placeholder="Mật khẩu" />
+    <button onclick="login()">Đăng nhập</button>
+    <button onclick="register()">Đăng ký</button>
+    <button onclick="logout()">Đăng xuất</button>
+  </div>
+
   <!-- Form thêm task -->
   <div>
     <input type="text" id="taskInput" placeholder="Nhập công việc mới" />
@@ -44,8 +54,8 @@
     <h3>Lọc theo khoảng thời gian</h3>
     <input type="date" id="startDate" />
     <input type="date" id="endDate" />
-    <button onclick="filterByRange()">Lọc</button>
-  </div>
+    <button onclick="filterByRange()">Lọc</button
+        </div>
 
   <!-- Đăng xuất -->
   <button onclick="logout()">Đăng xuất</button>
