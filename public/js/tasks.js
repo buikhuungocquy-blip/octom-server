@@ -1,38 +1,3 @@
-function login() {
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
-  fetch("/login", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username, password })
-  })
-    .then(res => res.text())
-    .then(msg => {
-      alert(msg);
-      location.reload();
-    });
-}
-
-function register() {
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
-  fetch("/register", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username, password })
-  })
-    .then(res => res.text())
-    .then(msg => {
-      alert(msg);
-      location.reload();
-    });
-}
-
-function logout() {
-  fetch("/logout").then(() => location.reload());
-}
-
-// Các hàm quản lý task (giữ nguyên như trước)
 function allowDrop(ev) { ev.preventDefault(); }
 function drag(ev) { ev.dataTransfer.setData("text/plain", ev.currentTarget.dataset.id); }
 function drop(ev) {
@@ -161,9 +126,7 @@ function loadTasks() {
   fetch("/tasks")
     .then(res => {
       if (res.status === 401) {
-        document.getElementById("todo").innerHTML = "<p>Chưa đăng nhập</p>";
-        document.getElementById("doing").innerHTML = "";
-        document.getElementById("done").innerHTML = "";
+        window.location.href = "/login.html";
         return [];
       }
       return res.json();

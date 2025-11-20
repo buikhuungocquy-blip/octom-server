@@ -1,52 +1,32 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>OCTOM Kanban Board 🎯</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1>OCTOM Kanban Board 🎯</h1>
 
-  <!-- Đăng nhập / Đăng ký -->
-  <div id="auth">
-    <h3>Đăng nhập / Đăng ký</h3>
-    <input type="text" id="username" placeholder="Tên tài khoản" />
-    <input type="password" id="password" placeholder="Mật khẩu" />
-    <button onclick="login()">Đăng nhập</button>
-    <button onclick="register()">Đăng ký</button>
-    <button onclick="logout()">Đăng xuất</button>
-  </div>
-
   <!-- Form thêm task -->
-  <div>
+  <section id="add-task">
     <input type="text" id="taskInput" placeholder="Nhập công việc mới" />
     <input type="date" id="deadlineInput" />
     <button onclick="addTask()">Thêm</button>
-  </div>
+  </section>
 
   <!-- Board Kanban -->
-  <div class="board">
-    <div class="column">
-      <h2>Todo</h2>
-      <div id="todo" class="task-list"></div>
-    </div>
-    <div class="column">
-      <h2>Doing</h2>
-      <div id="doing" class="task-list"></div>
-    </div>
-    <div class="column">
-      <h2>Done</h2>
-      <div id="done" class="task-list"></div>
-    </div>
-  </div>
+  <section class="board">
+    <div class="column"><h2>Todo</h2><div id="todo" class="task-list"></div></div>
+    <div class="column"><h2>Doing</h2><div id="doing" class="task-list"></div></div>
+    <div class="column"><h2>Done</h2><div id="done" class="task-list"></div></div>
+  </section>
 
   <!-- Thống kê -->
-  <div id="stats">Todo: 0 | Doing: 0 | Done: 0</div>
+  <section id="stats">Todo: 0 | Doing: 0 | Done: 0</section>
 
   <!-- Bộ lọc -->
-  <div class="filters">
+  <section class="filters">
     <h3>Lọc theo ngày</h3>
     <input type="date" id="filterDate" />
     <button onclick="filterByDate()">Lọc</button>
@@ -54,12 +34,10 @@
     <h3>Lọc theo khoảng thời gian</h3>
     <input type="date" id="startDate" />
     <input type="date" id="endDate" />
-    <button onclick="filterByRange()">Lọc</button
-        </div>
+    <button onclick="filterByRange()">Lọc</button>
+  </section>
 
-  <!-- Đăng xuất -->
   <button onclick="logout()">Đăng xuất</button>
-
-  <script src="app.js"></script>
+  <script src="js/tasks.js"></script>
 </body>
 </html>

@@ -38,6 +38,14 @@ function currentUser(req) {
   return req.session.user || null;
 }
 
+// Middleware: chặn truy cập index.html nếu chưa login
+app.use((req, res, next) => {
+  if (req.path === "/index.html" && !currentUser(req)) {
+    return res.redirect("/login.html");
+  }
+  next();
+});
+
 // Auth
 app.post("/register", async (req, res) => {
   const { username, password } = req.body;
@@ -64,7 +72,7 @@ app.get("/logout", (req, res) => {
   req.session.destroy(() => res.send("Đã đăng xuất"));
 });
 
-// Tasks
+// Tasks APIs (chỉ cho user đã login)
 app.get("/tasks", (req, res) => {
   const user = currentUser(req);
   if (!user) return res.status(401).send("Chưa đăng nhập");
