@@ -1,8 +1,17 @@
+/* Toàn bộ giao diện Kanban OCTOM */
+
 body {
   font-family: Arial, sans-serif;
   background-color: #121212;
   color: #fff;
   text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin: 20px 0;
+  color: #bb86fc;
 }
 
 .board {
@@ -18,12 +27,33 @@ body {
   border-radius: 8px;
 }
 
+.column h2 {
+  color: #03dac6;
+}
+
+.task-list {
+  min-height: 200px;
+  border: 1px dashed #444;
+  padding: 10px;
+  border-radius: 6px;
+}
+
 .task {
   background-color: #2e2e2e;
-  margin: 10px;
+  margin: 10px 0;
   padding: 10px;
   border-radius: 6px;
   cursor: grab;
+  text-align: left;
+}
+
+.task p {
+  margin: 0;
+  font-weight: bold;
+}
+
+.task small {
+  color: #aaa;
 }
 
 button {
@@ -33,6 +63,11 @@ button {
   color: white;
   border: none;
   border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3700b3;
 }
 
 input {
@@ -44,4 +79,10 @@ input {
 
 .filters {
   margin-top: 20px;
+}
+
+#stats {
+  margin: 20px;
+  font-weight: bold;
+  color: #03dac6;
 }
