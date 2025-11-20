@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1731900000000,
+    "text": "Học Node.js",
+    "status": "todo"
+  },
+  {
+    "id": 1731900001000,
+    "text": "Làm Kanban board",
+    "status": "doing"
+  }
+]

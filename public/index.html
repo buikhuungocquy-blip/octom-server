@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>OCTOM Kanban Board 🎯</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="auth" class="card">
+    <h2>🔐 Đăng nhập / Đăng ký</h2>
+    <input id="username" placeholder="Tên đăng nhập">
+    <input id="password" type="password" placeholder="Mật khẩu">
+    <div class="btn-group">
+      <button onclick="login()">Đăng nhập</button>
+      <button onclick="register()">Đăng ký</button>
+    </div>
+  </div>
+
+  <div id="app" style="display:none">
+    <header>
+      <h1>OCTOM Kanban Board 🎯</h1>
+      <button onclick="logout()">Đăng xuất</button>
+    </header>
+
+    <section class="controls">
+      <input id="newTask" placeholder="Nhập công việc mới">
+      <input id="newDeadline" type="date">
+      <button onclick="addTask()">➕ Thêm</button>
+      <div id="stats"></div>
+    </section>
+
+    <section class="board">
+      <div class="column">
+        <h3>📝 Todo</h3>
+        <ul id="todo"></ul>
+      </div>
+      <div class="column">
+        <h3>⚙️ Doing</h3>
+        <ul id="doing"></ul>
+      </div>
+      <div class="column">
+        <h3>✅ Done</h3>
+        <ul id="done"></ul>
+      </div>
+    </section>
+
+    <section class="filters">
+      <h4>📅 Lọc theo ngày</h4>
+      <input type="date" id="filterDay">
+      <button onclick="filterByDate(filterDay.value)">Lọc</button>
+
+      <h4>📆 Lọc theo khoảng thời gian</h4>
+      <input type="date" id="startDay">
+      <input type="date" id="endDay">
+      <button onclick="filterByRange(startDay.value, endDay.value)">Lọc</button>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
