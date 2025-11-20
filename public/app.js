@@ -92,15 +92,36 @@ function renderTasks(tasks) {
   updateStats();
 }
 
-function loadTasks() {
-  fetch("/tasks")
+function filterByDate() {
+  const day = document.getElementById("filterDate").value;
+  if (!day) return;
+  fetch(`/tasks/date/${day}`)
     .then(res => res.json())
     .then(renderTasks);
+}
+
+function filterByRange() {
+  const start = document.getElementById("startDate").value;
+  const end = document.getElementById("endDate").value;
+  if (!start || !end) return;
+  fetch(`/tasks/range?start=${start}&end=${end}`)
+    .then(res => res.json())
+    .then(renderTasks);
+}
+
+function logout() {
+  location.reload();
 }
 
 document.querySelectorAll(".task-list").forEach(list => {
   list.addEventListener("dragover", allowDrop);
   list.addEventListener("drop", drop);
 });
+
+function loadTasks() {
+  fetch("/tasks")
+    .then(res => res.json())
+    .then(renderTasks);
+}
 
 loadTasks();

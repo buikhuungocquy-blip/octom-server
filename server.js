@@ -14,7 +14,6 @@ app.use(session({
   saveUninitialized: true
 }));
 
-// DB
 const db = new sqlite3.Database("octom.db");
 db.serialize(() => {
   db.run(`CREATE TABLE IF NOT EXISTS tasks (
@@ -27,13 +26,11 @@ db.serialize(() => {
   )`);
 });
 
-// Helper: user mặc định
 function currentUser(req) {
   if (!req.session.user) req.session.user = "default";
   return req.session.user;
 }
 
-// API
 app.get("/tasks", (req, res) => {
   const user = currentUser(req);
   db.all("SELECT * FROM tasks WHERE user = ?", [user], (err, rows) => {
@@ -96,6 +93,28 @@ app.get("/tasks/stats", (req, res) => {
       const stats = { todo: 0, doing: 0, done: 0 };
       rows.forEach(r => stats[r.status] = r.count);
       res.json(stats);
+    });
+});
+
+app.get("/tasks/date/:day", (req, res) => {
+  const user = currentUser(req);
+  const { day } = req.params;
+  db.all("SELECT * FROM tasks WHERE user = ? AND DATE(deadline) = ? ORDER BY id ASC",
+    [user, day],
+    (err, rows) => {
+      if (err) return res.status(500).send("Lỗi lọc theo ngày");
+      res.json(rows);
+    });
+});
+
+app.get("/tasks/range", (req, res) => {
+  const user = currentUser(req);
+  const { start, end } = req.query;
+  db.all("SELECT * FROM tasks WHERE user = ? AND DATE(deadline) BETWEEN ? AND ? ORDER BY id ASC",
+    [user, start, end],
+    (err, rows) => {
+      if (err) return res.status(500).send("Lỗi lọc theo khoảng thời gian");
+      res.json(rows);
     });
 });
 
